@@ -18,8 +18,8 @@ def index(r):
     return render(r,'index.html')
 
 def shop(r):
-    order = r.GET.get('order')
-    if order is None:
+    order = r.GET.get('order')  
+    if order not in ['date','rating','popularity']:
         order = 'null'
     query = f"SELECT * FROM app_product ORDER BY {order}"
     products = Product.objects.raw(query)
