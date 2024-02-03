@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from app.models import Product
 # Create your views here.
 
 def cart(r):
@@ -18,4 +18,11 @@ def index(r):
     return render(r,'index.html')
 
 def shop(r):
-    return render(r,'shop.html')
+    order = r.GET.get('order')
+    if order is None:
+        order = 'null'
+    query = f"SELECT * FROM app_product ORDER BY {order}"
+    products = Product.objects.raw(query)
+    return render(r,'shop.html',{
+        "products":products
+    })
