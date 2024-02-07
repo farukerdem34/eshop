@@ -1,1 +1,0 @@
-SELECT * FROM app_product ORDER BY (CASE WHEN ((SELECT SUBSTR(flag,1,1) FROM flag)='S') THEN date ELSE popularity END)
