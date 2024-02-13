@@ -33,7 +33,6 @@ def shop(r):
         i=0
         lst__=[]
         while i<len(products):lst__.append(lst_[i]["product"]);i+=1
-        for i in lst__:print(i.date)
         products=lst__
     elif order=="popularity":
         products = Product.objects.order_by("popularity")
