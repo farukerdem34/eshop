@@ -48,4 +48,6 @@ def shop(r):
             "products":products
         })
     except Exception as e:
-        return redirect("shop")
+        return render(r,"shop.html",{
+            "products":Product.objects.all()
+        })
